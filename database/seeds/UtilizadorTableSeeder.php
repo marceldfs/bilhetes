@@ -12,7 +12,7 @@ class UtilizadorTableSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('users')->insert([
+        DB::table('utilizador')->insert([
             'nome' => 'admin',
             'email' => 'info@dugongo.co.mz',
             'tipo_utilizador_id' => 1,
