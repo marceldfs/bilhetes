@@ -13,10 +13,10 @@ class UtilizadorTableSeeder extends Seeder
     public function run()
     {
         DB::table('utilizador')->insert([
-            'nome' => 'admin',
+            'name' => 'admin',
             'email' => 'info@dugongo.co.mz',
             'tipo_utilizador_id' => 1,
-            'senha' => bcrypt('654321'),
+            'password' => bcrypt('654321'),
         ]);
     }
 }
