@@ -15,7 +15,7 @@ class CreateEventoTable extends Migration
     {
         Schema::create('evento', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('utilizador_id')->unsigned();
+            $table->integer('grupo_id')->unsigned();
             $table->string('nome');
             $table->string('local');
             $table->string('descricao');
@@ -24,7 +24,7 @@ class CreateEventoTable extends Migration
         });
         
         Schema::table('evento', function(Blueprint $table) {
-            $table->foreign('utilizador_id')->references('id')->on('utilizador');
+            $table->foreign('grupo_id')->references('id')->on('grupo');
         });
     }
 
