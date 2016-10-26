@@ -15,5 +15,6 @@ class DatabaseSeeder extends Seeder
         $this->call(TipoUtilizadorTableSeeder::class);
         $this->call(UtilizadorTableSeeder::class);
         $this->call(TipoBilheteTableSeeder::class);
+        $this->call(EventoTableSeeder::class);
     }
 }
