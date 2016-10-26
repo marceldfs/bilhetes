@@ -29,6 +29,9 @@
 	                    	{{ Form::label('grupo_id', 'Grupo',  ['class' => 'label label-default','for' => 'grupo_dropdown' ])  }} 
 	                    	{!! Form::select('grupo_dropdown',$grupos, null, ['class' => 'form-control ', 'id' => 'grupo_dropdown']) !!}
 	                   </div>
+	                   <div>
+	                   		{!!Form::submit('Confirmar',['class' => 'btn btn-success pull-right']); !!}
+	                   </div>
                     {!! Form::close() !!}
                 </div>
             </div>

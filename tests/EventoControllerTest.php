@@ -6,13 +6,11 @@ use Illuminate\Foundation\Testing\DatabaseTransactions;
 
 class EventoControllerTest extends TestCase
 {
-    /**
-     * A basic test example.
-     *
-     * @return void
-     */
-    public function testExample()
+
+	use DatabaseTransactions;
+    
+    public function testEventoStore()
     {
-        $this->assertTrue(true);
+    	Evento::create([])
     }
 }

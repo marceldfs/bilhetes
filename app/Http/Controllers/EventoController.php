@@ -7,6 +7,9 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Evento;
 use App\Grupo;
+use Input;
+use Session;
+use Redirect;
 
 class EventoController extends Controller
 {
@@ -47,6 +50,16 @@ class EventoController extends Controller
     public function store(Request $request)
     {
         //
+        $evento = new Evento; 
+        $evento->grupo_id = Input::get('grupo_dropdown');
+        $evento->nome = Input::get('nome_text');
+        $evento->local = Input::get('local_text');
+        $evento->descricao = Input::get('descricao_text');
+        $evento->data_hora = Input::get('data_hora_text');
+        $evento->save();
+
+        Session::flash('message', 'Successfully created!');
+        return Redirect::to('evento');
     }
 
     /**
