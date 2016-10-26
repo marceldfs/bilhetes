@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Evento;
+use App\Grupo;
 
 class EventoController extends Controller
 {
@@ -17,7 +18,6 @@ class EventoController extends Controller
     public function index()
     {
         //
-       // $eventos = DB::table('evento')->get();
          $eventos = Evento::all();
 
         // chamar a pagina 
@@ -32,8 +32,10 @@ class EventoController extends Controller
      */
     public function create()
     {
-        //
-        return \View::make('pages.evento_create');
+        //get list grupo 
+        $grupos = Grupo::pluck('descricao','id');
+        return \View::make('pages.evento_create') 
+        ->with('grupos',$grupos);
     }
 
     /**

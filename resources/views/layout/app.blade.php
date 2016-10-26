@@ -12,7 +12,7 @@
         <link href="{{ asset('bootstrap-3.3.7/css/edm.css') }}" rel="stylesheet">
         <script src="{{asset('https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js')}}"></script>
         <script src="{{asset('bootstrap-3.3.7/js/bootstrap.min.js')}}"></script>
-        <title>Censo 2016 - Electricidade de Mo&ccedil;ambique</title>
+        <title>Ticket System</title>
             
     </head>
         
@@ -34,7 +34,17 @@
                         <div id="navbar" class="navbar-collapse collapse">
                             <ul class="nav navbar-nav">
                                 <li class="active"><a href="/">Home</a></li>
-                                <li><a href="/efectivo">Efectivo</a></li>
+                                <li class="dropdown">
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Eventos <span class="caret"></span></a>
+                                      <ul class="dropdown-menu">
+                                        <li><a href="/evento">Visualizar Todos</a></li>
+                                        <li><a href="/evento/create">Adicionar</a></li>
+                                        <li><a href="#">Remover</a></li>
+                                        <li role="separator" class="divider"></li>
+                                        <li><a href="#">Visualizar Unico</a></li>
+                                      </ul>
+                                </li>
+
                                 <li><a href="/reformado">Reformados</a></li>
                                 <li><a href="/pensionista">Pensionistas</a></li>
                                 <li><a href="/busca">Busca</a></li>
