@@ -33,6 +33,7 @@ class EventoController extends Controller
     public function create()
     {
         //
+        return \View::make('pages.evento_create');
     }
 
     /**
