@@ -24,7 +24,7 @@ class EventoController extends Controller
          $eventos = Evento::all();
 
         // chamar a pagina 
-        return \View::make('pages.evento_list')
+        return \View::make('evento.evento_list')
         ->with('eventos',$eventos);
     }
 
@@ -37,7 +37,7 @@ class EventoController extends Controller
     {
         //get list grupo 
         $grupos = Grupo::pluck('descricao','id');
-        return \View::make('pages.evento_create') 
+        return \View::make('evento.evento_create') 
         ->with('grupos',$grupos);
     }
 
@@ -81,6 +81,9 @@ class EventoController extends Controller
     public function show($id)
     {
         //
+        $evento = Evento::find($id);
+
+        return \View::make('evento.evento_show')->with('evento',$evento);
     }
 
     /**
