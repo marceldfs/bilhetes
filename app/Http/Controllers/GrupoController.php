@@ -10,21 +10,11 @@ use Illuminate\Support\Facades\View;
 
 class GrupoController extends Controller
 {
-    /**
-     * Instantiate a new controller instance.
-     *
-     * @return void
-     */
     public function __construct()
     {
         $this->middleware('auth');
     }
     
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
         $grupos = Grupo::all();
@@ -32,22 +22,11 @@ class GrupoController extends Controller
             ->with('grupos', $grupos);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create()
     {
         return \View::make('grupo.create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
         $this->validate($request, [
@@ -58,52 +37,46 @@ class GrupoController extends Controller
         $grupo->descricao = $request->descricao;
         $grupo->save();
         
-        $request->session()->flash('mensagem', 'Salvado com sucesso!');
+        $request->session()->flash('mensagem', 'Grupo salvado com sucesso!');
         return redirect('grupo');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function show($id)
     {
-        //
+        $grupo = Grupo::find($id);
+
+        return View::make('grupo.show')
+            ->with('grupo', $grupo);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function edit($id)
     {
-        //
+        $grupo = Grupo::find($id);
+
+        return View::make('grupo.edit')
+            ->with('grupo', $grupo);
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function update(Request $request, $id)
     {
-        //
-    }
+        $this->validate($request, [
+           'descricao' => 'required',
+        ]);
+        
+        $grupo = Grupo::find($id);
+        $grupo->descricao = $request->descricao;
+        $grupo->save();
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
+        $request->session()->flash('mensagem', 'Grupo actualizado com sucesso!');
+        return redirect('grupo');
+    }
+    
+    public function destroy(Request $request, $id)
     {
-        //
+        $grupo = Grupo::find($id);
+        $grupo->delete();
+        
+        $request->session()->flash('mensagem', 'Grupo apagado com sucesso!');
+        return redirect('grupo');
     }
 }

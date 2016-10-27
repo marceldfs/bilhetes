@@ -1,8 +1,13 @@
-<?php
+@extends('layout.app')
 
-/* 
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+@section('content')
+<div class="container mukheroHack1">
 
+<h1>Showing {{ $grupo->descricao }}</h1>
+
+    <div class="jumbotron text-center">
+        <h2>{{ $grupo->descricao }}</h2>
+    </div>
+
+</div>
+@stop
