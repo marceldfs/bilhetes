@@ -44,38 +44,13 @@
                                         <li><a href="#">Visualizar Unico</a></li>
                                       </ul>
                                 </li>
-
-                                <li><a href="/reformado">Reformados</a></li>
-                                <li><a href="/pensionista">Pensionistas</a></li>
-                                <li><a href="/busca">Busca</a></li>
-                                @if (Auth::guest())
-                                @else
-                                @if (Auth::user()->tipo_utilizador==1 || Auth::user()->tipo_utilizador==2)
                                 <li class="dropdown">
-                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-                                        Supervisor <span class="caret"></span>
-                                    </a>
-                                        
-                                    <ul class="dropdown-menu" role="menu">
-                                        <li><a href="{{ url('/relatorio') }}"><i class="fa fa-btn fa-sign-out"></i>Relatorio</a></li>
-                                    </ul>
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Grupos <span class="caret"></span></a>
+                                      <ul class="dropdown-menu">
+                                        <li><a href="/grupo">Visualizar Todos</a></li>
+                                        <li><a href="/grupo/create">Adicionar</a></li>
+                                      </ul>
                                 </li>
-                                @endif
-                                @endif
-                                @if (Auth::guest())
-                                @else
-                                @if (Auth::user()->tipo_utilizador==1)
-                                <li class="dropdown">
-                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-                                        Administrador <span class="caret"></span>
-                                    </a>
-                                        
-                                    <ul class="dropdown-menu" role="menu">
-                                        <li><a href="{{ url('/utilizadores') }}"><i class="fa fa-btn fa-sign-out"></i>Utilizadores</a></li>
-                                    </ul>
-                                </li>
-                                @endif
-                                @endif
                                 <!-- Authentication Links -->
                                 @if (Auth::guest())
                                 <li><a href="{{ url('/login') }}">Login</a></li>
