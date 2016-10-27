@@ -49,6 +49,16 @@ class EventoController extends Controller
      */
     public function store(Request $request)
     {
+
+        $this->validate($request,[
+            'nome_text' => 'required|min:3',
+            'local_text' => 'required|min:3',
+            'data_hora_text' => 'required',
+            'descricao_text'=>'required|min:5',
+            'grupo_dropdown'=>'required',
+            ]
+            );
+
         //
         $evento = new Evento; 
         $evento->grupo_id = Input::get('grupo_dropdown');
@@ -58,7 +68,7 @@ class EventoController extends Controller
         $evento->data_hora = Input::get('data_hora_text');
         $evento->save();
 
-        Session::flash('message', 'Successfully created!');
+        //Session::flash('message', 'Successfully created!');
         return Redirect::to('evento');
     }
 
