@@ -11,6 +11,6 @@ class EventoControllerTest extends TestCase
     
     public function testEventoStore()
     {
-    	Evento::create([])
+    	Evento::create([]);
     }
 }
