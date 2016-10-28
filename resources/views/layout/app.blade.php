@@ -40,8 +40,8 @@
                                         <li><a href="/evento">Visualizar Todos</a></li>
                                         <li><a href="/evento/create">Adicionar</a></li>
                                         <li><a href="#">Remover</a></li>
-                                        <li role="separator" class="divider"></li>
-                                        <li><a href="#">Visualizar Unico</a></li>
+                                     <!--    <li role="separator" class="divider"></li>
+                                       <li><a href="#">Visualizar Unico</a></li> -->
                                       </ul>
                                 </li>
                                 <li class="dropdown">

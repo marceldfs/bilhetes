@@ -1,6 +1,9 @@
-@extends('layout')
-
+@extends('layout.app')
 @section('content')
+<div class="container mukheroHack2">
+@if (Session::has('mensagem'))
+    <div class="alert alert-info">{{ Session::get('mensagem') }}</div>
+@endif
 <table class="table table-striped table-bordered">
 	<thead>
 		<tr>
@@ -9,9 +12,8 @@
 			<td>Nome</td>
 			<td>Local</td>
 			<td>Descricao</td>
-			<td>data_Hora</td>
-			<td>Create at</td>
-			<td>Update at</td>
+			<td>data E Hora</td>
+			
 		</tr>
 	</thead>
 	<tbody>
@@ -23,10 +25,11 @@
 				<td>{{ $value->local }}</td>
 				<td>{{ $value->descricao }}</td>
 				<td>{{ $value->data_hora }}</td>
-				<td>{{ $value->created_at }}</td>
-				<td>{{ $value->updated_at}}</td>
+			
+				<td><a class="btn btn-small btn-info" href="{{ URL::to('evento/' . $value->id) }}">Visualizar</a></td>
 			</tr>
 			@endforeach
 	</tbody>
 </table>
+</div>
 @endsection

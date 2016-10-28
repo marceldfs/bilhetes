@@ -29,9 +29,12 @@
 	                 		{{ Form::text('grupo_dropdown',$evento->grupo_id,['class' => 'form-control ', 'id' => 'grupo_dropdown','readonly']) }}
 	                   </div>
 	                   <div>
-	                   		{!!Form::submit('Editar',['class' => 'btn btn-success pull-right']); !!}
-	                   		{!!Form::submit('Ver Bilhetes',['class' => 'btn btn-success pull-right']); !!}
+	                   	    <a class="btn btn-small btn-info" href="{{ URL::to('evento/' . $evento->id . '/edit') }}">Editar</a>
 	                   </div>
+	                   <div>
+	                   		{!!Form::submit('Ver Bilhetes',['class' => 'btn btn-success pull-right']); !!}
+	                   	</div>
+	               
                     {!! Form::close() !!}
                 </div>
             </div>

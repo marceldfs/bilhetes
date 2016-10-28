@@ -68,7 +68,7 @@ class EventoController extends Controller
         $evento->data_hora = Input::get('data_hora_text');
         $evento->save();
 
-        //Session::flash('message', 'Successfully created!');
+      Session::flash('mensagem', 'Evento Criado com Sucesso!');
         return Redirect::to('evento');
     }
 
@@ -95,6 +95,11 @@ class EventoController extends Controller
     public function edit($id)
     {
         //
+        $evento = Evento::find($id);
+        $grupos = Grupo::pluck('descricao','id');
+
+        return \View::make('evento.evento_edit')
+        ->with('evento',$evento)->with('grupos',$grupos);
     }
 
     /**
@@ -107,6 +112,26 @@ class EventoController extends Controller
     public function update(Request $request, $id)
     {
         //
+         $this->validate($request,[
+            'nome' => 'required|min:3',
+            'local' => 'required|min:3',
+            'data_hora' => 'required',
+            'descricao'=>'required|min:5',
+            'grupo_id'=>'required',
+            ]
+            );
+
+         $evento = Evento::find($id);
+         $evento->grupo_id = Input::get('grupo_id');
+         $evento->nome = Input::get('nome');
+         $evento->local = Input::get('local');
+         $evento->descricao = Input::get('descricao');
+         $evento->data_hora = Input::get('data_hora');
+         $evento->save();
+
+         Session::flash('mensagem', 'Evento Editado Com Sucesso!');
+        return Redirect::to('evento');
+
     }
 
     /**
