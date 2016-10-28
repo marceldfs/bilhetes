@@ -27,3 +27,5 @@ Route::resource('evento','EventoController');
 
 Route::resource('grupo','GrupoController');
 
+Route::resource('bilhetes','EventoTipoBilheteController');
+

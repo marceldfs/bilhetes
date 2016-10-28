@@ -51,6 +51,13 @@
                                         <li><a href="/grupo/create">Adicionar</a></li>
                                       </ul>
                                 </li>
+                                <li class="dropdown">
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Bilhetes <span class="caret"></span></a>
+                                      <ul class="dropdown-menu">
+                                        <li><a href="/bilhetes">Visualizar Todos</a></li>
+                                        <li><a href="/bilhetes/create">Adicionar</a></li>
+                                      </ul>
+                                </li>
                                 <!-- Authentication Links -->
                                 @if (Auth::guest())
                                 <li><a href="{{ url('/login') }}">Login</a></li>

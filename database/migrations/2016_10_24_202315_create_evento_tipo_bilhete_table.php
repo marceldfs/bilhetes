@@ -18,7 +18,7 @@ class CreateEventoTipoBilheteTable extends Migration
             $table->integer('evento_id')->unsigned();
             $table->integer('tipo_bilhete_id')->unsigned();
             $table->integer('quantidade');
-            $table->binary('fundo');
+            $table->string('fundo');
             $table->timestamps();
         });
         

@@ -31,7 +31,7 @@ class GrupoController extends Controller
     {
         $this->validate($request, [
            'descricao' => 'required',
-       ]);
+        ]);
         
         $grupo = new Grupo;
         $grupo->descricao = $request->descricao;
