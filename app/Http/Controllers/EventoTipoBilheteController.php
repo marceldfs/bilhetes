@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Http\Request;
 use App\Evento;
 use App\TipoBilhete;
@@ -77,7 +78,15 @@ class EventoTipoBilheteController extends Controller
      */
     public function edit($id)
     {
-        //
+        
+        $eventos = Evento::pluck('nome', 'id');
+        $tipoBilhetes = TipoBilhete::pluck('descricao', 'id');      
+        $eventoTipoBilhete = EventoTipoBilhete::find($id);
+
+        return \View::make('bilhetes.edit')
+            ->with('eventoTipoBilhete', $eventoTipoBilhete)
+            ->with('eventos', $eventos)
+            ->with('tipoBilhetes', $tipoBilhetes);
     }
 
     /**
@@ -89,7 +98,24 @@ class EventoTipoBilheteController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $this->validate($request, [
+           'quantidade' => 'required|integer',
+        ]);
+        
+        $eventoTipoBilhete = EventoTipoBilhete::find($id);
+        $eventoTipoBilhete->evento_id = $request->input('evento');
+        $eventoTipoBilhete->tipo_bilhete_id = $request->input('tipoBilhetes');
+        $eventoTipoBilhete->quantidade = $request->quantidade;
+        
+        if($request->file('fundo')!=null)
+        {
+            Storage::delete($eventoTipoBilhete->fundo);
+            $eventoTipoBilhete->fundo = $request->file('fundo')->store('fundos');
+        }
+        $eventoTipoBilhete->save();
+
+        $request->session()->flash('mensagem', 'Bilhetes actualizados com sucesso!');
+        return redirect('bilhetes');
     }
 
     /**
