@@ -25,8 +25,13 @@
 				<td>{{ $value->local }}</td>
 				<td>{{ $value->descricao }}</td>
 				<td>{{ $value->data_hora }}</td>
-			
 				<td><a class="btn btn-small btn-info" href="{{ URL::to('evento/' . $value->id) }}">Visualizar</a></td>
+				<td>
+					 {{ Form::open(array('url' => 'evento/' . $value->id, 'class' => 'pull-right')) }}
+                    	{{ Form::hidden('_method', 'DELETE') }}
+                    	{{ Form::submit('Delete ', array('class' => 'btn btn-warning')) }}
+                	{{ Form::close() }}
+				</td>
 			</tr>
 			@endforeach
 	</tbody>

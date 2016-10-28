@@ -30,6 +30,7 @@
 	                   </div>
 	                   <div>
 	                   	    <a class="btn btn-small btn-info" href="{{ URL::to('evento/' . $evento->id . '/edit') }}">Editar</a>
+	                   		 
 	                   </div>
 	                   <div>
 	                   		{!!Form::submit('Ver Bilhetes',['class' => 'btn btn-success pull-right']); !!}

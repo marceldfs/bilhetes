@@ -13,6 +13,12 @@ use Redirect;
 
 class EventoController extends Controller
 {
+
+  public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -143,5 +149,9 @@ class EventoController extends Controller
     public function destroy($id)
     {
         //
+        $evento = Evento::find($id);
+        $evento->delete();
+        Session::flash('mensagem', 'Evento Removido Com Sucesso!');
+        return Redirect::to('evento');
     }
 }
