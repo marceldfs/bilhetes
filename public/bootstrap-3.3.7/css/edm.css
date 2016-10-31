@@ -3,10 +3,22 @@
 /* Padding below the footer and lighter body text */
 
 body {
-  padding-bottom: 40px;
-  color: #5a5a5a;
-  background-color: #EBE8E8;
-
+  
+  background-color: transparent;
+  background-image: url('/image/imageBckd.png');
+  
+  background-repeat: no-repeat;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+ /* background-color: transparent;
+  background-image: url('/image/imageBckd.jpg') no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  */
 }
 
 /* CUSTOMIZE THE NAVBAR
@@ -34,6 +46,11 @@ body {
   width: auto;
 }
 
+.navbar-tr
+{
+  background-color: transparent !important;
+  border-width: 0 !important;
+}
 
 /* CUSTOMIZE THE CAROUSEL
 -------------------------------------------------- */
