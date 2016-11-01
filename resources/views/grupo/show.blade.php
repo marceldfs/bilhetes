@@ -1,7 +1,7 @@
 @extends('layout.app')
 
 @section('content')
-<div class="container mukheroHack1">
+<div class="container mukheroHack3 back-color-white">
 
 <h1>Showing {{ $grupo->descricao }}</h1>
 

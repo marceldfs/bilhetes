@@ -1,9 +1,9 @@
 @extends('layout.app')
 @section('content')
-<div class="container mukheroHack2">
+<div class="container mukheroHack3">
     <div class="row">
 
-        <div class="col-md-8 col-md-offset-2">
+        <div class="col-md-8 col-md-offset-2 back-color-white">
             <div class="panel panel-default">
                 <div class="panel-heading">Editando o evento</div>
 					@if (count($errors) > 0)

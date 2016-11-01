@@ -3,7 +3,7 @@
 
 @section('content')
 
-<div class="container mukheroHack1">
+<div class="container mukheroHack3 back-color-white">
 <h1>Editar {{ $grupo->descricao }}</h1>
 
 @if (count($errors) > 0)

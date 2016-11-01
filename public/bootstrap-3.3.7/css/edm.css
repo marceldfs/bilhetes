@@ -4,21 +4,18 @@
 
 body {
   
-  background-color: transparent;
-  background-image: url('/image/imageBckd.png');
+  text-align:center;
+  background:url(/image/pw_maze_black_2X.png) left top repeat;
+  padding:280px 0;
+
+  /*background-color: transparent;
   
+  background-image: url('/image/imageBckd.jpg');
   background-repeat: no-repeat;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
-  background-size: cover;
- /* background-color: transparent;
-  background-image: url('/image/imageBckd.jpg') no-repeat center center fixed; 
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
-  */
+  background-size: cover;*/
 }
 
 /* CUSTOMIZE THE NAVBAR
@@ -201,6 +198,31 @@ body {
 {
   margin-top: 120px;
 }
+.mukheroHack3
+{
+  margin-top: -200px;
+}
+.back-color-white
+{
+  background-color: white;
+
+}
+
+.label-format
+{
+ 
+font-weight:normal;
+text-transform:uppercase;
+color:#000000;
+letter-spacing:1pt;
+word-spacing:2pt;
+font-size:14px;
+text-align:left;
+font-family:courier new, courier, monospace;
+line-height:2;
+color:red;
+
+}
 
 .custom-panel-warning
 {
@@ -228,7 +250,7 @@ body {
 
 .panel-red-heading
 {
-  background-color: #D20000 !important;
+  background-color: #9A0000 !important;
 }
 .panel-orange-heading
 {
@@ -242,6 +264,77 @@ body {
 {
   line-height: 20px;
 }
+
+
+/* NOVAS ALTERACOES 
+-------------------------------------------------- */
+
+.text-white-color
+{
+  color:white;
+}
+.text-white-color-legend
+{
+  color:white;
+  font-weight:normal;
+  text-transform:uppercase;
+
+letter-spacing:1pt;
+word-spacing:2pt;
+font-size:14px;
+}
+.10px-from-top
+{
+  margin-top: 20px;
+}
+
+.tg  
+{
+  border-collapse:collapse;
+  border-spacing:0;
+  border-color:#999;
+}
+.tg td
+{
+  font-family:Arial, sans-serif;font-size:14px;
+  padding:10px 5px;
+  border-style:solid;
+  border-width:1px;
+  overflow:hidden;word-break:normal;border-color:#999;color:#444;
+  background-color:#F7FDFA;
+}
+.tg th
+{
+  
+  text-align:center;
+  font-family:courier new, courier, monospace;
+  line-height:2;
+  font-size:14px;
+  font-weight:bold;padding:10px 5px;
+  text-transform:uppercase;
+  border-style:solid;border-width:1px;
+  overflow:hidden;word-break:normal;
+  border-color:#999;color:#fff;
+  background-color:#9A0000;
+}
+.tg .tg-yw4l
+{
+  vertical-align:top
+}
+
+.btn-view
+{
+  background-color: #9A0000 !important;
+}
+
+
+
+
+
+
+
+
+
 
 /* RESPONSIVE CSS
 -------------------------------------------------- */

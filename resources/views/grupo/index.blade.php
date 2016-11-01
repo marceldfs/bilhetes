@@ -1,9 +1,11 @@
 @extends('layout.app')
 
 @section('content')
+    
+<div class="container mukheroHack3 back-color-white">
+    <br/>
+<a href="{{ URL::to('grupo/create') }}" class="btn btn-primary">Criar grupo</a>
 
-<div class="container mukheroHack1">
-<a href="{{ URL::to('grupo/create') }}">Criar grupo</a>
 
 @if (Session::has('mensagem'))
     <div class="alert alert-info">{{ Session::get('mensagem') }}</div>
@@ -28,10 +30,9 @@
                     {{ Form::hidden('_method', 'DELETE') }}
                     {{ Form::submit('Apagar', array('class' => 'btn btn-warning')) }}
                 {{ Form::close() }}
-                
-                <a class="btn btn-small btn-success" href="{{ URL::to('grupo/' . $value->id) }}">Visualizar</a>
-
-                <a class="btn btn-small btn-info" href="{{ URL::to('grupo/' . $value->id . '/edit') }}">Editar</a>
+              
+                <a class="btn btn-small btn-success pull-right"  href="{{ URL::to('grupo/' . $value->id) }}">Visualizar</a>
+                <a class="btn btn-small btn-info pull-right" href="{{ URL::to('grupo/' . $value->id . '/edit') }}">Editar</a>
 
             </td>
         </tr>
