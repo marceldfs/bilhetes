@@ -15,8 +15,7 @@
             <td>ID</td>
             <td>Evento</td>
             <td>TipoBilhete</td>
-            <td>Quantidade</td>
-            <td>Cartaz</td>
+            <td>Usado</td>
             <td>Actions</td>
         </tr>
     </thead>
@@ -26,8 +25,7 @@
             <td>{{ $value->id }}</td>
             <td>{{ $value->evento($value->evento_id)->nome }}</td>
             <td>{{ $value->tipoBilhete($value->tipo_bilhete_id)->descricao }}</td>
-            <td>{{ $value->quantidade }}</td>
-            <td><img src="data:image/jpeg;base64,{{ base64_encode(Storage::get($value->fundo)) }}" alt="Mountain View" style="width:304px;height:228px;"></td>
+            <td>{{ $value->usado }}</td>
             <td>
 
                 {{ Form::open(array('url' => 'bilhetes/' . $value->id, 'class' => 'pull-right')) }}

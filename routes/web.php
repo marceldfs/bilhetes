@@ -29,3 +29,5 @@ Route::resource('grupo','GrupoController');
 
 Route::resource('bilhetes','EventoTipoBilheteController');
 
+Route::get('bilhete/{id}','BilheteController@index');
+
