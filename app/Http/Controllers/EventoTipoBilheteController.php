@@ -53,6 +53,7 @@ class EventoTipoBilheteController extends Controller
         $eventoTipoBilhete->evento_id = $request->input('evento');
         $eventoTipoBilhete->tipo_bilhete_id = $request->input('tipoBilhetes');
         $eventoTipoBilhete->quantidade = $request->quantidade;
+        $eventoTipoBilhete->orientacao = $request->input('orientacao');
         $eventoTipoBilhete->fundo = $request->file('fundo')->store('fundos', 'public');
         $eventoTipoBilhete->save();
         $this->generateBilhetes($eventoTipoBilhete);
@@ -109,6 +110,7 @@ class EventoTipoBilheteController extends Controller
         $eventoTipoBilhete->evento_id = $request->input('evento');
         $eventoTipoBilhete->tipo_bilhete_id = $request->input('tipoBilhetes');
         $eventoTipoBilhete->quantidade = $request->quantidade;
+        $eventoTipoBilhete->orientacao = $request->input('orientacao');
         
         if($request->file('fundo')!=null)
         {

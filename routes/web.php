@@ -33,3 +33,5 @@ Route::get('bilhete/{id}','BilheteController@index');
 
 Route::get('bilhete/showTicket/{chave}','BilheteController@showPdf');
 
+Route::get('bilhete/readTicket/{chave}','BilheteController@read');
+

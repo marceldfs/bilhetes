@@ -35,6 +35,11 @@
     </div>
 
     <div class="form-group">
+        {{ Form::label('orientacao', 'Orientacao do cartaz :',['class' => 'label-format pull-left' ]) }}
+        {{ Form::select('orientacao', ['landscape' => 'Landscape', 'portrait' => 'Portrait']) }}
+    </div>
+
+    <div class="form-group">
         {{ Form::label('fundo', 'Cartaz :',['class' => 'label-format pull-left' ]) }}
         {{ Form::file('fundo', ['class' => 'form-control ', 'id' => 'fundo']) }}
     </div>

@@ -38,7 +38,7 @@ class BilheteController extends Controller
         $html = $html."<style>body{background-image:url('".\Storage::url($eventoTipoBilhete->fundo,'public')."');}</style>";
         $html = $html."<img src='https://chart.googleapis.com/chart?chs=200x200&cht=qr&chl=".$path.$chave."&choe=UTF-8' title='Link to ticket' />";
         $html = $html."</body>";
-        $pdf->loadHTML($html)->setPaper('a4', 'landscape');//->setWarnings('true');
+        $pdf->loadHTML($html)->setPaper('a4', $eventoTipoBilhete->orientacao);//->setWarnings('true');
         return $pdf->download('ticket_'.$tipoBilhete->descricao.'_'.$evento->nome.'.pdf');
     }
 
@@ -47,64 +47,8 @@ class BilheteController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function read($chave)
     {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
+        
     }
 }

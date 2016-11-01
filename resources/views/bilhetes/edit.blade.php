@@ -1,11 +1,11 @@
-
 @extends('layout.app')
-
 @section('content')
 
-<div class="container mukheroHack1">
-<h1>Editar {{ $eventoTipoBilhete->evento($eventoTipoBilhete->evento_id)->nome }}</h1>
-
+<div class="container mukheroHack3">
+    <div class="row">
+        <div class="col-md-8 col-md-offset-2">
+            <div class="panel panel-default">
+                <div class="panel-heading panel-red-heading"><span class="text-white-color-legend">EDITAR - {{ $eventoTipoBilhete->evento($eventoTipoBilhete->evento_id)->nome  }}</span></div>
 @if (count($errors) > 0)
     <div class="alert alert-danger">
         <ul>
@@ -34,13 +34,21 @@
     </div>
 
     <div class="form-group">
+        {{ Form::label('orientacao', 'Orientacao do cartaz :') }}
+        {{ Form::select('orientacao', ['landscape' => 'Landscape', 'portrait' => 'Portrait'], $eventoTipoBilhete->orientacao, ['class' => 'form-control ', 'id' => 'orientacao']) }}
+    </div>
+
+    <div class="form-group">
         {{ Form::label('fundo', 'Cartaz') }}<br>
-        <img src="data:image/jpeg;base64,{{ base64_encode(Storage::get($eventoTipoBilhete->fundo)) }}" alt="Mountain View" style="width:304px;height:228px;">
+        <img src="{{ Storage::url($eventoTipoBilhete->fundo,'public') }}" alt="Mountain View" style="width:304px;height:228px;">
         {{ Form::file('fundo', ['class' => 'form-control ', 'id' => 'fundo']) }}
     </div>
 
     {{ Form::submit('Editar bilhetes', array('class' => 'btn btn-primary')) }}
 
 {{ Form::close() }}
-
+</div>
+</div>
+</div>
+</div>
 </div>
