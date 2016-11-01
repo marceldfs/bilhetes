@@ -25,7 +25,13 @@
             <td>{{ $value->id }}</td>
             <td>{{ $value->evento($value->evento_id)->nome }}</td>
             <td>{{ $value->tipoBilhete($value->tipo_bilhete_id)->descricao }}</td>
-            <td>{{ $value->usado }}</td>
+            <td>
+                @if ($value->usado==1)
+                    Sim
+                @else
+                    Nao
+                @endif
+            </td>
             <td>
                 
                 <a class="btn btn-small btn-success" href="{{ URL::to('bilhete/showTicket/' . $value->chave) }}">&nbsp;<span class="glyphicon glyphicon-file" aria-hidden="true"></span>&nbsp;</a>

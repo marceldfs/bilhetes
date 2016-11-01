@@ -47,8 +47,25 @@ class BilheteController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function read($chave)
+    public function read(Request $request, $chave)
     {
-        
+        $bilhete = Bilhete::where('chave',$chave)->first();
+        if($bilhete==null)
+        {
+            $request->session()->flash('mensagem', 'Bilhete invalido!');
+        }
+        else{
+            if($bilhete->usado==1)
+            {
+                $request->session()->flash('mensagem', 'Bilhete ja usado!');
+            }
+            else
+            {
+                $request->session()->flash('mensagem', 'Bilhete valido, do tipo '.$bilhete->tipoBilhete($bilhete->tipo_bilhete_id)->descricao.'!');
+                $bilhete->usado=1;
+                $bilhete->save();
+            }
+        }
+        return \View::make('bilhete.read');
     }
 }
