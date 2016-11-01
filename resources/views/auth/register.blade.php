@@ -1,7 +1,7 @@
 @extends('layout.app')
 
 @section('content')
-<div class="container mukheroHack2">
+<div class="container mukheroHack3">
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default">
