@@ -41,6 +41,7 @@
                         <div class="form-group">
                             <div class="col-md-6 col-md-offset-4">
                                 <div class="checkbox">
+                                    
                                     <label>
                                         <input type="checkbox" name="remember"> Remember Me
                                     </label>
@@ -50,6 +51,7 @@
 
                         <div class="form-group">
                             <div class="col-md-8 col-md-offset-4">
+                                <a class="btn btn-danger" href="{{ url('/register') }}"><span class="text-white-color">Register</span></a>
                                 <button type="submit" class="btn btn-primary">
                                     Login
                                 </button>

@@ -30,7 +30,7 @@
                                 <span class="icon-bar"></span>
                                 <span class="icon-bar"></span>
                             </button>
-                            <img alt="Brand" src="image/logp.png">         
+                            <img alt="Brand" src="/image/logp.png">         
                         </div>
                         <div id="navbar" class="navbar-collapse collapse">
                             <ul class="nav navbar-nav">
@@ -69,7 +69,6 @@
                                         {{ Auth::user()->name }} <span class="caret"></span>
                                     </a>
                                     <ul class="dropdown-menu" role="menu">
-                                        <li><a href="{{ url('/mudarsenha') }}"><i class="fa fa-btn"></i>Alterar minha senha</a></li>
                                          <li><a href="{{ url('/logout') }}"><i class="fa fa-btn fa-sign-out"></i>Logout</a></li>
                                     </ul>    
                                 </li>

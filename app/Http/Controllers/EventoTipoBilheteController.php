@@ -53,7 +53,7 @@ class EventoTipoBilheteController extends Controller
         $eventoTipoBilhete->evento_id = $request->input('evento');
         $eventoTipoBilhete->tipo_bilhete_id = $request->input('tipoBilhetes');
         $eventoTipoBilhete->quantidade = $request->quantidade;
-        $eventoTipoBilhete->fundo = $request->file('fundo')->store('fundos');
+        $eventoTipoBilhete->fundo = $request->file('fundo')->store('fundos', 'public');
         $eventoTipoBilhete->save();
         $this->generateBilhetes($eventoTipoBilhete);
         
@@ -113,7 +113,7 @@ class EventoTipoBilheteController extends Controller
         if($request->file('fundo')!=null)
         {
             Storage::delete($eventoTipoBilhete->fundo);
-            $eventoTipoBilhete->fundo = $request->file('fundo')->store('fundos');
+            $eventoTipoBilhete->fundo = $request->file('fundo')->store('fundos', 'public');
         }
         $eventoTipoBilhete->save();
         $this->generateBilhetes($eventoTipoBilhete);
@@ -128,9 +128,13 @@ class EventoTipoBilheteController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $request, $id)
     {
-        //
+        $eventoTipoBilhete = EventoTipoBilhete::find($id);
+        $eventoTipoBilhete->delete();
+        
+        $request->session()->flash('mensagem', 'Bilhetes apagados com sucesso!');
+        return redirect('bilhetes');
     }
     
     private function generateBilhetes(EventoTipoBilhete $eventoTipoBilhete)

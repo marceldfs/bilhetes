@@ -1,22 +1,22 @@
 @extends('layout.app')
-
 @section('content')
-
-<div class="container mukheroHack1">
-<a href="{{ URL::to('bilhetes/create') }}">Gerar bilhetes</a>
+<div class="container mukheroHack3">
 
 @if (Session::has('mensagem'))
     <div class="alert alert-info">{{ Session::get('mensagem') }}</div>
 @endif
-
-<table class="table table-striped table-bordered">
-    <thead>
+<div class="row">
+  <div class="col-md-12">
+    <div class="panel panel-default">
+<div class="panel-heading panel-red-heading"><span class="text-white-color-legend">Lista dos Bilhetes </div>
+<table class="table table-striped table-bordered back-color-white tg">
+    <thead class="tg-yw4l">
         <tr>
-            <td>ID</td>
-            <td>Evento</td>
-            <td>TipoBilhete</td>
-            <td>Usado</td>
-            <td>Actions</td>
+            <th>ID</th>
+            <th>Evento</th>
+            <th>TipoBilhete</th>
+            <th>Usado</th>
+            <th>Actions</th>
         </tr>
     </thead>
     <tbody>
@@ -27,17 +27,10 @@
             <td>{{ $value->tipoBilhete($value->tipo_bilhete_id)->descricao }}</td>
             <td>{{ $value->usado }}</td>
             <td>
-
-                {{ Form::open(array('url' => 'bilhetes/' . $value->id, 'class' => 'pull-right')) }}
-                    {{ Form::hidden('_method', 'DELETE') }}
-                    {{ Form::submit('Apagar', array('class' => 'btn btn-warning')) }}
-                {{ Form::close() }}
                 
-                <a class="btn btn-small btn-success" href="{{ URL::to('bilhetes/' . $value->id) }}">Visualizar</a>
+                <a class="btn btn-small btn-success" href="{{ URL::to('bilhete/showTicket/' . $value->chave) }}">&nbsp;<span class="glyphicon glyphicon-file" aria-hidden="true"></span>&nbsp;</a>
                 
-                <a class="btn btn-small btn-success" href="{{ URL::to('bilhete/' . $value->id) }}">Listar bilhetes</a>
-
-                <a class="btn btn-small btn-info" href="{{ URL::to('bilhetes/' . $value->id . '/edit') }}">Editar</a>
+                <a class="btn btn-small btn-success" href="whatsapp://send?text={{ URL::to('bilhete/showTicket/' . $value->chave) }}" data-action="share/whatsapp/share">&nbsp;<span class="glyphicon glyphicon-earphone" aria-hidden="true"></span>&nbsp;</a>
 
             </td>
         </tr>
@@ -45,5 +38,8 @@
     </tbody>
 </table>
 </div>
-@stop
+</div>
+</div>
+</div>
+@endsection
 

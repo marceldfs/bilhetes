@@ -18,7 +18,7 @@
             <th>TipoBilhete</th>
             <th>Quantidade</th>
             <th>Cartaz</th>
-            <th>Suas Operações</th>
+            <th colspan="4">Suas Operações</th>
         </tr>
     </thead>
     <tbody>
@@ -28,7 +28,7 @@
             <td>{{ $value->evento($value->evento_id)->nome }}</td>
             <td>{{ $value->tipoBilhete($value->tipo_bilhete_id)->descricao }}</td>
             <td>{{ $value->quantidade }}</td>
-            <td><img src="data:image/jpeg;base64,{{ base64_encode(Storage::get($value->fundo)) }}" alt="Mountain View" style="width:304px;height:228px;"></td>
+            <td><img src="{{ Storage::url($value->fundo,'public') }}" alt="Mountain View" style="width:304px;height:228px;"></td>
             <td>
 
                 {{ Form::open(array('url' => 'bilhetes/' . $value->id, 'class' => 'pull-right')) }}
@@ -38,10 +38,7 @@
 
             </td>
             <td>    
-                <a class="btn btn-small btn-success" href="{{ URL::to('bilhete/' . $value->id) }}">Listar bilhetes</a>
-            </td>
-            <td> 
-                <a class="btn btn-small btn-success" href="{{ URL::to('bilhetes/' . $value->id) }}">&nbsp;<span class="glyphicon glyphicon-blackboard" aria-hidden="true"></span>&nbsp;</a>
+                <a class="btn btn-small btn-success" href="{{ URL::to('bilhete/' . $value->id) }}">&nbsp;<span class="glyphicon glyphicon-list" aria-hidden="true"></span>&nbsp;</a>
             </td>
             <td>
                 <a class="btn btn-small btn-info" href="{{ URL::to('bilhetes/' . $value->id . '/edit') }}">&nbsp;<span class="glyphicon glyphicon-wrench" aria-hidden="true"></span>&nbsp;</a>
