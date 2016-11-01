@@ -4,9 +4,9 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class EventoTipoBilhete extends Model
+class Bilhete extends Model
 {
-    protected $table = 'evento_tipo_bilhete';
+    protected $table = 'bilhete';
      
     public function evento($id)
     {
