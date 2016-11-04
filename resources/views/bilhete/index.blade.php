@@ -37,6 +37,8 @@
                 <a class="btn btn-small btn-success" href="{{ URL::to('bilhete/showTicket/' . $value->chave) }}">&nbsp;<span class="glyphicon glyphicon-file" aria-hidden="true"></span>&nbsp;</a>
                 
                 <a class="btn btn-small btn-success" href="whatsapp://send?text={{ URL::to('bilhete/showTicket/' . $value->chave) }}" data-action="share/whatsapp/share">&nbsp;<span class="glyphicon glyphicon-earphone" aria-hidden="true"></span>&nbsp;</a>
+                
+                <a class="btn btn-small btn-success" href="whatsapp://send?image={{ Storage::url($value->fundo,'public') }}" data-action="share/whatsapp/share">&nbsp;<span class="glyphicon glyphicon-earphone" aria-hidden="true"></span>&nbsp;</a>
 
             </td>
         </tr>

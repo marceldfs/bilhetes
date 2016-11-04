@@ -17,6 +17,7 @@
             <th>Evento</th>
             <th>TipoBilhete</th>
             <th>Quantidade</th>
+            <th>Bilhetes usados</th>
             <th>Cartaz</th>
             <th colspan="4">Suas Operações</th>
         </tr>
@@ -28,6 +29,7 @@
             <td>{{ $value->evento($value->evento_id)->nome }}</td>
             <td>{{ $value->tipoBilhete($value->tipo_bilhete_id)->descricao }}</td>
             <td>{{ $value->quantidade }}</td>
+            <td>{{ $value->bilhetesUsados($value->evento_id,$value->tipo_bilhete_id) }}</td>
             <td><img src="{{ Storage::url($value->fundo,'public') }}" alt="Mountain View" style="width:304px;height:228px;"></td>
             <td>
 

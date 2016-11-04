@@ -148,7 +148,7 @@ class EventoTipoBilheteController extends Controller
             $bilhete = new Bilhete;
             $bilhete->evento_id = $eventoTipoBilhete->evento_id;
             $bilhete->tipo_bilhete_id = $eventoTipoBilhete->tipo_bilhete_id;
-            $bilhete->chave = rand(5,15).'-'.$i.'-'.$bilhete->evento_id.'-'.$bilhete->tipo_bilhete_id;
+            $bilhete->chave = rand(1,1000).'-'.$i.'-'.$bilhete->evento_id.'-'.$bilhete->tipo_bilhete_id;
             $bilhete->usado = 0;
             $bilhete->save();
         }
