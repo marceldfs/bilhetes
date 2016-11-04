@@ -153,4 +153,20 @@ class EventoTipoBilheteController extends Controller
             $bilhete->save();
         }
     }
+    
+    public function clean(Request $request, $id)
+    {
+        $eventoTipoBilhete = EventoTipoBilhete::find($id);
+        
+        $bilhetes = Bilhete::where('evento_id',$eventoTipoBilhete->evento_id)
+                ->where('tipo_bilhete_id',$eventoTipoBilhete->tipo_bilhete_id)->get();
+        
+        foreach ($bilhetes as $value) {
+            $value->usado=0;
+            $value->save();
+        }
+        
+        $request->session()->flash('mensagem', 'Bilhetes limpados com sucesso!');
+        return redirect('bilhetes');
+    }
 }

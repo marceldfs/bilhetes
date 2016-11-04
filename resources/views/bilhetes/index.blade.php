@@ -45,6 +45,9 @@
             <td>
                 <a class="btn btn-small btn-info" href="{{ URL::to('bilhetes/' . $value->id . '/edit') }}">&nbsp;<span class="glyphicon glyphicon-wrench" aria-hidden="true"></span>&nbsp;</a>
             </td>
+            <td>
+                <a class="btn btn-small btn-info" href="{{ URL::to('bilhetes/clean/' . $value->id . '') }}">&nbsp;<span class="glyphicon glyphicon-remove-sign" aria-hidden="true"></span>&nbsp;</a>
+            </td>
         </tr>
     @endforeach
     </tbody>

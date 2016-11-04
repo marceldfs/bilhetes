@@ -35,3 +35,4 @@ Route::get('bilhete/showTicket/{chave}','BilheteController@showPdf');
 
 Route::get('bilhete/readTicket/{chave}','BilheteController@read');
 
+Route::get('bilhetes/clean/{id}','EventoTipoBilheteController@clean');
