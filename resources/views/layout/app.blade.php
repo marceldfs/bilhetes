@@ -10,9 +10,14 @@
         <!-- Bootstrap core CSS -->
         <link href="{{ asset('bootstrap-3.3.7/css/bootstrap.min.css') }}" rel="stylesheet">
         <link href="{{ asset('bootstrap-3.3.7/css/edm.css') }}" rel="stylesheet">
+        <link href="{{ asset('dataTables.bootstrap.min.cs') }}" rel="stylesheet">
+        
         
         <script src="{{asset('https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js')}}"></script>
         <script src="{{asset('bootstrap-3.3.7/js/bootstrap.min.js')}}"></script>
+        <script src="{{asset('dataTables.bootstrap.min.js')}}"></script>
+        <script src="{{asset('jquery-1.12.3.js')}}"></script>
+        <script src="{{asset('jquery.dataTables.min.js')}}"></script>
         <title>Ticket System</title>
             
     </head>

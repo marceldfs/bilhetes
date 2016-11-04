@@ -9,7 +9,7 @@
   <div class="col-md-12">
     <div class="panel panel-default">
 <div class="panel-heading panel-red-heading"><span class="text-white-color-legend">Lista dos Bilhetes </div>
-<table class="table table-striped table-bordered back-color-white tg">
+<table id="lista-bilhetes" class="table table-striped table-bordered back-color-white tg">
     <thead class="tg-yw4l">
         <tr>
             <th>ID</th>
@@ -45,6 +45,11 @@
     @endforeach
     </tbody>
 </table>
+<script>
+$(document).ready(function() {
+    $('#lista-bilhetes').DataTable();
+} );
+</script>
 </div>
 </div>
 </div>
