@@ -327,7 +327,10 @@ font-size:14px;
   background-color: #9A0000 !important;
 }
 
-
+.divHide
+{
+  display: none;
+}
 
 
 

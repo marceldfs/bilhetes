@@ -15,6 +15,11 @@ Route::get('/', function () {
     return view('pages.index');
 });
 
+Route::get('/servicos', function(){
+	return view ('pages.servicos');
+});
+
+
 //Route::post('login', '\App\Http\Controllers\Auth\LoginController@postLogin');
 
 Auth::routes();
@@ -36,3 +41,4 @@ Route::get('bilhete/showTicket/{chave}','BilheteController@showPdf');
 Route::get('bilhete/readTicket/{chave}','BilheteController@read');
 
 Route::get('bilhetes/clean/{id}','EventoTipoBilheteController@clean');
+
