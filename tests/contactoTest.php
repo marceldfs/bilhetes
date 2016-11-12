@@ -4,8 +4,9 @@ use Illuminate\Foundation\Testing\WithoutMiddleware;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 
-class PaginaPrincipalTest extends TestCase
+class contactoTest extends TestCase
 {
+	use DatabaseMigrations;
     /**
      * A basic test example.
      *
