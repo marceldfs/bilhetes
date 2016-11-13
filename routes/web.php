@@ -42,3 +42,4 @@ Route::get('bilhete/readTicket/{chave}','BilheteController@read');
 
 Route::get('bilhetes/clean/{id}','EventoTipoBilheteController@clean');
 
+Route::resource('contacto','ContactoController');
