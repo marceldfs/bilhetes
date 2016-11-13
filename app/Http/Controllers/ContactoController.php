@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Contacto;
+use Input;
 
 class ContactoController extends Controller
 {
@@ -35,7 +37,13 @@ class ContactoController extends Controller
     public function store(Request $request)
     {
         //
-       return \View::make('evento/evento_list');
+       $contacto = new Contacto;
+       $contacto->nome = Input::get('nome');
+       $contacto->grupo_id=Input::get('grupo_id');
+       $contacto->numero=Input::get('numero');
+
+       $contacto->save();
+
     }
 
     /**

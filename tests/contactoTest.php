@@ -7,7 +7,7 @@ use App\Contacto;
 
 class contactoTest extends TestCase
 {
-	use DatabaseMigrations;
+	use DatabaseTransactions;
    
     /** @test */
    public function deveCriarContacto()
@@ -18,6 +18,6 @@ class contactoTest extends TestCase
             'numero'=>'+258820007100', 
             ));
         //get the last book 
-        $this->seeInDatabase('contacto',['nome'=>'Yuri Wingester']);
+        $this->seeInDatabase('contacto',['nome'=>'Yuri Wingester','numero'=>'+258820007100']);
    }
 }
