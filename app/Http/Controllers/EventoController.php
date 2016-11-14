@@ -20,6 +20,14 @@ class EventoController extends Controller
     }
 
     /**
+    * Para mostrar a pagina inicial de cada modulo
+    */
+    public function home()
+    {
+        return \View::make('evento.evento_home');
+    }
+
+    /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response

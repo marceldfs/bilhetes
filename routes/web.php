@@ -28,6 +28,8 @@ Route::get('/home', 'HomeController@index');
 
 Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout');
 
+Route::get('evento/home','EventoController@home');
+
 Route::resource('evento','EventoController');
 
 Route::resource('grupo','GrupoController');
@@ -42,4 +44,6 @@ Route::get('bilhete/readTicket/{chave}','BilheteController@read');
 
 Route::get('bilhetes/clean/{id}','EventoTipoBilheteController@clean');
 
+Route::get('mensagem/home','ContactoController@home');
 Route::resource('contacto','ContactoController');
+

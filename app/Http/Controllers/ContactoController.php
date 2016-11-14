@@ -8,6 +8,21 @@ use Input;
 
 class ContactoController extends Controller
 {
+
+
+     public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
+    /**
+    * Para mostrar a pagina inicial de cada modulo
+    */
+    public function home()
+    {
+        return \View::make('mensagem.mensagem_home');
+    }
+
     /**
      * Display a listing of the resource.
      *
