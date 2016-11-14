@@ -29,6 +29,22 @@ class contactoTest extends TestCase
    }
 
    /** @test */
+   public function naoDeveCriarContactoSemNumero()
+   {
+       //Logar um user
+      $user = factory(App\Utilizador::class)->make();
+      $this->actingAs($user);
+      
+      $this->call('POST','contacto',array(
+            'grupo_id'=>1,
+            'nome'=>'Yuri Wingester',
+            'numero'=>' '
+            ));
+      $resultsDB = Contacto::where('nome','Yuri Wingester')->count();
+      $this->assertEquals(0,$resultsDB);
+   }
+
+  
    public function deveBuscarTodosContactosPorGrupoID()
    {  
       //Logar um user
