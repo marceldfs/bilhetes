@@ -80,13 +80,9 @@
                                 @endif
                             </ul>
                                 
-                            <!--
-                          <form class="navbar-form navbar-right" role="search">
-                             <div class="form-group">
-                                <input type="text" class="input-sm form-control" placeholder="Search">
-                             </div>
-                                <button type="submit" class="btn btn-sm btn-warning">Procurar</button>
-                          </form>-->
+                         <form class="navbar-form navbar-right" role="search">                             
+                                <a type="submit" class="btn btn-sm btn-warning" href="/mensagem/home">Gerir Envio de SMS</a>
+                          </form>
                         </div>
                     </div>
                 </nav>

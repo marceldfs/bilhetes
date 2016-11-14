@@ -55,11 +55,13 @@ class ContactoController extends Controller
     {   
 
         $this->validate($request,[
-            'numero'=>'required|min:9'
+            'numero'=>'required|min:9',
+            'nome'=>'required|min:3'
             ]);
         //
        $contacto = new Contacto;
        $contacto->nome = Input::get('nome');
+       //Este valor deve vir automaticamente do utilizador logado 
        $contacto->grupo_id=Input::get('grupo_id');
        $contacto->numero=Input::get('numero');
 

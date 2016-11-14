@@ -53,14 +53,7 @@
                                         <li><a href="/grupo/">Visualizar Todos</a></li>
                                         <li><a href="/grupo/create">Adicionar</a></li>
                                       </ul>
-                                </li>
-                                <li class="dropdown">
-                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Bilhetes <span class="caret"></span></a>
-                                      <ul class="dropdown-menu">
-                                        <li><a href="/bilhetes">Visualizar Todos</a></li>
-                                        <li><a href="/bilhetes/create">Adicionar</a></li>
-                                      </ul>
-                                </li>
+                                </li>                    
                                 <!-- Authentication Links -->
                                 @if (Auth::guest())
                                 <li><a href="{{ url('/login') }}">Login</a></li>
@@ -77,13 +70,10 @@
                                 @endif
                             </ul>
                                 
-                            <!--
-                          <form class="navbar-form navbar-right" role="search">
-                             <div class="form-group">
-                                <input type="text" class="input-sm form-control" placeholder="Search">
-                             </div>
-                                <button type="submit" class="btn btn-sm btn-warning">Procurar</button>
-                          </form>-->
+                            
+                          <form class="navbar-form navbar-right" role="search">                             
+                                <a type="submit" class="btn btn-sm btn-warning" href="/evento/home">Gerir Bilhetes</a>
+                          </form>
                         </div>
                     </div>
                 </nav>
