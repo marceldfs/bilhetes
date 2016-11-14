@@ -52,7 +52,11 @@ class ContactoController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {
+    {   
+
+        $this->validate($request,[
+            'numero'=>'required|min:9'
+            ]);
         //
        $contacto = new Contacto;
        $contacto->nome = Input::get('nome');
