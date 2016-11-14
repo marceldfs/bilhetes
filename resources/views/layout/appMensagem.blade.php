@@ -20,8 +20,7 @@
             
     </head>
         
-    <body>
-        
+    <body>        
         <div class="navbar-wrapper">
             <div class="container">       
                 <nav class="navbar navbar-inverse navbar-static-top">
@@ -41,7 +40,7 @@
                                 <li class="dropdown">
                                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Contactos <span class="caret"></span></a>
                                       <ul class="dropdown-menu">
-                                        <li><a href="/evento">Visualizar Todos</a></li>
+                                        <li><a href="/contacto/{{ Auth::user()->id }}">Visualizar Todos</a></li>
                                         <li><a href="/evento/create">Adicionar</a></li>
                                         
                                      <!--    <li role="separator" class="divider"></li>
@@ -51,7 +50,7 @@
                                 <li class="dropdown">
                                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Enviar SMS <span class="caret"></span></a>
                                       <ul class="dropdown-menu">
-                                        <li><a href="/grupo">Visualizar Todos</a></li>
+                                        <li><a href="/grupo/">Visualizar Todos</a></li>
                                         <li><a href="/grupo/create">Adicionar</a></li>
                                       </ul>
                                 </li>

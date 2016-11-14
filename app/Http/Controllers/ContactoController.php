@@ -28,9 +28,11 @@ class ContactoController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index($id)
     {
         //
+        $contactos_by_grupoID = Contacto::where('grupo_id',$id)->get();
+        return \View::make('contactos.contacto_list')->with('contactos',$contactos_by_grupoID);
     }
 
     /**

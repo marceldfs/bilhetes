@@ -9,7 +9,7 @@ class contactoTest extends TestCase
 {
 	 
     use DatabaseTransactions;
-    
+    //use WithoutMiddleware;
    
     /** @test */
    public function deveCriarContacto()
@@ -29,17 +29,18 @@ class contactoTest extends TestCase
    }
 
    /** @test */
-   public function deveBuscarTodosContactos()
+   public function deveBuscarTodosContactosPorGrupoID()
    {  
       //Logar um user
       $user = factory(App\Utilizador::class)->make();
       $this->actingAs($user);
 
       //Criar os 5 contactos 
-      $contactos_criar = factory(App\Contacto::class,5)->create();
+      $contactos_criar = factory(App\Contacto::class,4)->create();
 
       //Verificar se o request recebe a respota HTTP 200
-      $this -> call('GET','contacto');
+      $this -> call('GET','contacto',array('id'=>1));
+      //$this->action('GET','ContactoController@index',['id'=>1]);
       $this -> assertResponseOk();
 
       //Verificar se a VIEW recebe uma varial de nome $contactos

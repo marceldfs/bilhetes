@@ -46,5 +46,7 @@ Route::get('bilhetes/clean/{id}','EventoTipoBilheteController@clean');
 
 Route::get('mensagem/home','ContactoController@home');
 
+Route::get('contacto/{id}','ContactoController@index');
+
 Route::resource('contacto','ContactoController');
 
