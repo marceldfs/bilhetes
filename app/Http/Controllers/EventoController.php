@@ -82,7 +82,8 @@ class EventoController extends Controller
         $evento->data_hora = Input::get('data_hora_text');
         $evento->save();
 
-      Session::flash('mensagem', 'Evento Criado com Sucesso!');
+        
+        Session::flash('mensagem', 'Evento Criado com Sucesso!');
         return Redirect::to('evento');
     }
 

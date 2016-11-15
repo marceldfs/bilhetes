@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Contacto;
 use Input;
+use Session;
+use Redirect;
+use Illuminate\Support\Facades\Auth;
 
 class ContactoController extends Controller
 {
@@ -55,18 +58,23 @@ class ContactoController extends Controller
     {   
 
         $this->validate($request,[
-            'numero'=>'required|min:9',
+            'numero'=>'required|min:13',
             'nome'=>'required|min:3'
             ]);
         //
+       $user = Auth::user();
        $contacto = new Contacto;
        $contacto->nome = Input::get('nome');
        //Este valor deve vir automaticamente do utilizador logado 
-       $contacto->grupo_id=Input::get('grupo_id');
+       //$contacto->grupo_id=$user->grupo_id;
+       //$contacto->grupo_id=Input::get('grupo_id');
+       $contacto->grupo_id=1;
        $contacto->numero=Input::get('numero');
 
        $contacto->save();
-
+       Session::flash('mensagem', 'Contacto Criado com Sucesso!');
+       //return redirect()->action('ContactoController@index',['id'=>$user->grupo_id]);
+       return redirect()->route('contactos', ['id' => 1]);      
     }
 
     /**
