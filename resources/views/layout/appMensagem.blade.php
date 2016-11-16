@@ -10,12 +10,26 @@
         <!-- Bootstrap core CSS -->
         <link href="{{ asset('bootstrap-3.3.7/css/bootstrap.min.css') }}" rel="stylesheet">
         <link href="{{ asset('bootstrap-3.3.7/css/edm.css') }}" rel="stylesheet">
-        <link href="{{ asset('dataTables.bootstrap.min.cs') }}" rel="stylesheet">     
+        <link href="{{ asset('dataTables.bootstrap.min.css') }}" rel="stylesheet">     
+        <link href="{{ asset('scroller/scroller.bootstrap.min.css') }}" rel="stylesheet">
+
+
         <script src="{{asset('https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js')}}"></script>
-        <script src="{{asset('bootstrap-3.3.7/js/bootstrap.min.js')}}"></script>
-        <script src="{{asset('dataTables.bootstrap.min.js')}}"></script>
-        <script src="{{asset('jquery-1.12.3.js')}}"></script>
+        
+
+        <script src="{{asset('bootstrap-3.3.7/js/bootstrap.min.js')}}"></script>        
+        
+
         <script src="{{asset('jquery.dataTables.min.js')}}"></script>
+
+        <script src="{{asset('dataTables.bootstrap.min.js')}}"></script>
+        
+
+        
+        
+        <script src="{{asset('scroller/dataTables.scroller.min.js')}}"></script>
+        
+
         <title>SMS System</title>
             
     </head>
@@ -37,15 +51,14 @@
                         <div id="navbar" class="navbar-collapse collapse">
                             <ul class="nav navbar-nav">
                                 <li class="active"><a href="/">Home</a></li>
-                                <li class="dropdown">
-                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Contactos <span class="caret"></span></a>
-                                      <ul class="dropdown-menu">
+                                 <li >
+                                    <a href="/contacto/{{ Auth::user()->id }}"  role="button" aria-haspopup="true" aria-expanded="false">Contactos </a>
+                                   {{--  <ul class="dropdown-menu">
                                         <li><a href="/contacto/{{ Auth::user()->id }}">Visualizar Todos</a></li>
-                                        <li><a href="/evento/create">Adicionar</a></li>
-                                        
+                                                                             
                                      <!--    <li role="separator" class="divider"></li>
                                        <li><a href="#">Visualizar Unico</a></li> -->
-                                      </ul>
+                                      </ul>--}}
                                 </li>
                                 <li class="dropdown">
                                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Enviar SMS <span class="caret"></span></a>
