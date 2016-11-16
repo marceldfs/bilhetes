@@ -15,6 +15,11 @@ Route::get('/', function () {
     return view('pages.index');
 });
 
+Route::get('/servicos', function(){
+	return view ('pages.servicos');
+});
+
+
 //Route::post('login', '\App\Http\Controllers\Auth\LoginController@postLogin');
 
 Auth::routes();
@@ -22,6 +27,8 @@ Auth::routes();
 Route::get('/home', 'HomeController@index');
 
 Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout');
+
+Route::get('evento/home','EventoController@home');
 
 Route::resource('evento','EventoController');
 
@@ -36,3 +43,11 @@ Route::get('bilhete/showTicket/{chave}','BilheteController@showPdf');
 Route::get('bilhete/readTicket/{chave}','BilheteController@read');
 
 Route::get('bilhetes/clean/{id}','EventoTipoBilheteController@clean');
+
+Route::get('mensagem/home','ContactoController@home');
+
+Route::get('contacto/{id}','ContactoController@index')->name('contactos');
+
+Route::resource('contacto','ContactoController');
+
+Route::get('mensagem/createMessage','MensagemController@createMessage');

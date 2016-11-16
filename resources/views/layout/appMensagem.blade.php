@@ -10,20 +10,32 @@
         <!-- Bootstrap core CSS -->
         <link href="{{ asset('bootstrap-3.3.7/css/bootstrap.min.css') }}" rel="stylesheet">
         <link href="{{ asset('bootstrap-3.3.7/css/edm.css') }}" rel="stylesheet">
-        <link href="{{ asset('dataTables.bootstrap.min.cs') }}" rel="stylesheet">
-        
-        
+        <link href="{{ asset('dataTables.bootstrap.min.css') }}" rel="stylesheet">     
+        <link href="{{ asset('scroller/scroller.bootstrap.min.css') }}" rel="stylesheet">
+
+
         <script src="{{asset('https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js')}}"></script>
-        <script src="{{asset('bootstrap-3.3.7/js/bootstrap.min.js')}}"></script>
-        <script src="{{asset('dataTables.bootstrap.min.js')}}"></script>
-        <script src="{{asset('jquery-1.12.3.js')}}"></script>
+        
+
+        <script src="{{asset('bootstrap-3.3.7/js/bootstrap.min.js')}}"></script>        
+        
+
         <script src="{{asset('jquery.dataTables.min.js')}}"></script>
-        <title>Ticket System</title>
+
+        <script src="{{asset('dataTables.bootstrap.min.js')}}"></script>
+        
+
+        
+        
+        <script src="{{asset('scroller/dataTables.scroller.min.js')}}"></script>
+        <link href="{{ asset('selection/select.bootstrap.min.css') }}" rel="stylesheet">
+        <script src="{{asset('selection/dataTables.select.min.js')}}"></script>
+
+        <title>SMS System</title>
             
     </head>
         
-    <body>
-        
+    <body>        
         <div class="navbar-wrapper">
             <div class="container">       
                 <nav class="navbar navbar-inverse navbar-static-top">
@@ -35,35 +47,27 @@
                                 <span class="icon-bar"></span>
                                 <span class="icon-bar"></span>
                             </button>
-                            <img alt="Brand" src="/image/logp.png">         
+                            <img alt="Brand" src="/image/logp.png" href="/">         
                         </div>
                         <div id="navbar" class="navbar-collapse collapse">
                             <ul class="nav navbar-nav">
                                 <li class="active"><a href="/">Home</a></li>
-                                <li class="dropdown">
-                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Eventos <span class="caret"></span></a>
-                                      <ul class="dropdown-menu">
-                                        <li><a href="/evento">Visualizar Todos</a></li>
-                                        <li><a href="/evento/create">Adicionar</a></li>
-                                        
+                                 <li >
+                                    <a href="/contacto/{{ Auth::user()->id }}"  role="button" aria-haspopup="true" aria-expanded="false">Contactos </a>
+                                   {{--  <ul class="dropdown-menu">
+                                        <li><a href="/contacto/{{ Auth::user()->id }}">Visualizar Todos</a></li>
+                                                                             
                                      <!--    <li role="separator" class="divider"></li>
                                        <li><a href="#">Visualizar Unico</a></li> -->
-                                      </ul>
+                                      </ul>--}}
                                 </li>
                                 <li class="dropdown">
-                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Grupos <span class="caret"></span></a>
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Enviar SMS <span class="caret"></span></a>
                                       <ul class="dropdown-menu">
-                                        <li><a href="/grupo">Visualizar Todos</a></li>
+                                        <li><a href="/grupo/">Visualizar Todos</a></li>
                                         <li><a href="/grupo/create">Adicionar</a></li>
                                       </ul>
-                                </li>
-                                <li class="dropdown">
-                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Bilhetes <span class="caret"></span></a>
-                                      <ul class="dropdown-menu">
-                                        <li><a href="/bilhetes">Visualizar Todos</a></li>
-                                        <li><a href="/bilhetes/create">Adicionar</a></li>
-                                      </ul>
-                                </li>
+                                </li>                    
                                 <!-- Authentication Links -->
                                 @if (Auth::guest())
                                 <li><a href="{{ url('/login') }}">Login</a></li>
@@ -80,8 +84,9 @@
                                 @endif
                             </ul>
                                 
-                         <form class="navbar-form navbar-right" role="search">                             
-                                <a type="submit" class="btn btn-sm btn-warning" href="/mensagem/home">Gerir Envio de SMS</a>
+                            
+                          <form class="navbar-form navbar-right" role="search">                             
+                                <a type="submit" class="btn btn-sm btn-warning" href="/evento/home">Gerir Bilhetes</a>
                           </form>
                         </div>
                     </div>

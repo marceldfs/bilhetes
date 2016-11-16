@@ -18,5 +18,7 @@ class UtilizadorTableSeeder extends Seeder
             'tipo_utilizador_id' => 1,
             'password' => bcrypt('654321'),
         ]);
+        //Gerar user a paritr de um model factory
+        $utilizdor = factory(App\Utilizador::class)->create();
     }
 }

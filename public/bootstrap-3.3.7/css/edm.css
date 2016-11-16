@@ -305,7 +305,6 @@ font-size:14px;
 }
 .tg th
 {
-  
   text-align:center;
   font-family:courier new, courier, monospace;
   line-height:2;
@@ -327,9 +326,15 @@ font-size:14px;
   background-color: #9A0000 !important;
 }
 
-
-
-
+.divHide
+{
+  display: none;
+}
+.table-scroll {
+  height:400px;
+  overflow:auto;  
+  margin-top:20px;
+}
 
 
 
