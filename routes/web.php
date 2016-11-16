@@ -50,3 +50,4 @@ Route::get('contacto/{id}','ContactoController@index')->name('contactos');
 
 Route::resource('contacto','ContactoController');
 
+Route::get('mensagem/createMessage','MensagemController@createMessage');

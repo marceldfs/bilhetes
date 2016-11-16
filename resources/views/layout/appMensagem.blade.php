@@ -28,7 +28,8 @@
         
         
         <script src="{{asset('scroller/dataTables.scroller.min.js')}}"></script>
-        
+        <link href="{{ asset('selection/select.bootstrap.min.css') }}" rel="stylesheet">
+        <script src="{{asset('selection/dataTables.select.min.js')}}"></script>
 
         <title>SMS System</title>
             
