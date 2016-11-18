@@ -68,13 +68,13 @@ class ContactoController extends Controller
        //Este valor deve vir automaticamente do utilizador logado 
        //$contacto->grupo_id=$user->grupo_id;
        //$contacto->grupo_id=Input::get('grupo_id');
-       $contacto->grupo_id=1;
+       $contacto->grupo_id=$user->grupo_id;
        $contacto->numero=Input::get('numero');
 
        $contacto->save();
        Session::flash('mensagem', 'Contacto Criado com Sucesso!');
        //return redirect()->action('ContactoController@index',['id'=>$user->grupo_id]);
-       return redirect()->route('contactos', ['id' => 1]);      
+       return redirect()->route('contactos', ['id' => $user->grupo_id]);      
     }
 
     /**

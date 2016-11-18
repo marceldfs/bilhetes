@@ -62,12 +62,8 @@
                                       </ul>--}}
                                 </li>
                                 <li class="dropdown">
-                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Enviar SMS <span class="caret"></span></a>
-                                      <ul class="dropdown-menu">
-                                        <li><a href="/grupo/">Visualizar Todos</a></li>
-                                        <li><a href="/grupo/create">Adicionar</a></li>
-                                      </ul>
-                                </li>                    
+                                    <a href="/mensagem/{{ Auth::user()->id }}" role="button" aria-haspopup="true" aria-expanded="false">Enviar SMS </a>
+                                 </li>                    
                                 <!-- Authentication Links -->
                                 @if (Auth::guest())
                                 <li><a href="{{ url('/login') }}">Login</a></li>

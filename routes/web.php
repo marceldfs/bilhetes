@@ -50,4 +50,9 @@ Route::get('contacto/{id}','ContactoController@index')->name('contactos');
 
 Route::resource('contacto','ContactoController');
 
-Route::get('mensagem/createMessage','MensagemController@createMessage');
+Route::get('mensagem/createMessage','MensagemController@createMessage')->name('criarSms');
+
+Route::get('mensagem/{id}','MensagemController@index')->name('envio');
+
+
+

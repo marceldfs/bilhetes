@@ -3,14 +3,30 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
+use Input;
+use Session;
+use App\Contacto;
 
 class MensagemController extends Controller
 {
 
 
-    public function createMessage(Request $request)
+    public function createMessage()
     {
-        return \View::make('mensagem.mensagem_envio');
+        $valor = Input::get('dados');
+        $teste="";
+
+       
+
+      foreach ($valor as $key => $value) {
+            $teste .= $value;
+            
+        }
+
+        //Session::flash('mensagem', $teste);
+
+        return response()->json(array('msg'=> $teste), 200);
     }
 
 
@@ -19,11 +35,12 @@ class MensagemController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+     public function index($id)
     {
         //
+        $contactos_by_grupoID = Contacto::where('grupo_id',$id)->get();
+        return \View::make('mensagem.mensagem_envio')->with('contactos',$contactos_by_grupoID);
     }
-
     /**
      * Show the form for creating a new resource.
      *
@@ -31,7 +48,7 @@ class MensagemController extends Controller
      */
     public function create()
     {
-        //
+      
     }
 
     /**
@@ -43,6 +60,7 @@ class MensagemController extends Controller
     public function store(Request $request)
     {
         //
+        
     }
 
     /**

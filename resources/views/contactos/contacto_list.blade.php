@@ -40,7 +40,6 @@
 	</tbody>
 </table>
 </div>
-<a  id="enviar" class="btn btn-small btn-success">Enviar SMS <span class="glyphicon glyphicon-envelope" aria-hidden="true"></span>&nbsp;</a>
 </div>
 	<div class="col-md-4">
 		 <div class="panel-heading panel-red-heading"><span class="text-white-color-legend">Adicionar contacto</span></div>
@@ -89,22 +88,6 @@ $(document).ready(function() {
 	        "scrollCollapse": true,
 	        "paging":         false
     } );
-
-
-$('#enviar').click(function(){
-	var table = $('#tabelaContactos').DataTable();
-	var dataArr = [];
-	var rows = $('tr.selected');
-	var rowData =  table.rows(rows).data();
-	$.each($(rowData),function(key,value){
-		dataArr.push(value["Numero"]);
-	});
-	$.ajax({
-		type:'GET',
-		url:'/mensagem/createMessage',
-		data: dataArr
-	});
-});
 } );
 </script>
 
