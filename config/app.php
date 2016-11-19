@@ -163,6 +163,7 @@ return [
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
 
+
         /*
          * Package Service Providers...
          */
@@ -179,6 +180,7 @@ return [
         App\Providers\RouteServiceProvider::class,
         Collective\Html\HtmlServiceProvider::class,
         Barryvdh\DomPDF\ServiceProvider::class,
+        Nexmo\Laravel\NexmoServiceProvider::class,
     ],
 
     /*
@@ -230,6 +232,7 @@ return [
         'Html' => Collective\Html\HtmlFacade::class,
         'Input'=> Illuminate\Support\Facades\Input::class,
         'PDF' => Barryvdh\DomPDF\Facade::class,
+        'Nexmo' => \Nexmo\Laravel\Facade\Nexmo::class,
 
     ],
 

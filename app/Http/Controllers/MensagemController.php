@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Log;
 use Input;
 use Session;
 use App\Contacto;
+use Nexmo;
 
 class MensagemController extends Controller
 {
@@ -24,11 +25,60 @@ class MensagemController extends Controller
             
         }
 
+
+
+        $response = $this->createRequest();
+       
+
         //Session::flash('mensagem', $teste);
 
-        return response()->json(array('msg'=> $teste), 200);
+        return response()->json(array('msg'=>  $resposta), 200);
+    }
+    public function createRequest()
+    {   
+
+        Nexmo::message()->send([
+             'to' => '258820007100',
+              'from' => 'Mukhero',
+              'text' => 'Hello from Nexmo'
+            ]);
+
+       /*$url = 'https://rest.nexmo.com/sms/json?' . http_build_query(
+            [
+              'api_key' =>  'b1afbefe',
+              'api_secret' => 'a68c63a17b751d4c',
+              'to' => '258820007100',
+              'from' => 'Mukhero',
+              'text' => 'Hello from Nexmo'
+            ]
+        );
+
+        $ch = curl_init($url);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        $response = curl_exec($ch);*/
+
+       return  "Parece Good";    
     }
 
+
+    public function seeResponse($response)
+    {
+         //Decode the json object you retrieved when you ran the request.
+          $decoded_response = json_decode($response, true);
+          $valor="";
+          error_log('You sent ' . $decoded_response['message-count'] . ' messages.');
+
+          foreach ( $decoded_response['messages'] as $message ) {
+              if ($message['status'] == 0) {
+                  error_log("Success " . $message['message-id']);
+                  $valor = "Success ";
+              } else {
+                  error_log("Error {$message['status']} {$message['error-text']}");
+                  $valor = "Error";
+              }
+          }
+          return  $valor;
+    }
 
      /**
      * Display a listing of the resource.
