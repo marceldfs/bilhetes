@@ -28,7 +28,7 @@ class BilheteController extends Controller
     {
         $basePath = "http://localhost:8000/";
         $path = $basePath."bilhete/readTicket/";
-        $bilhete = Bilhete::where('chave',$chave)->first();
+        $bilhete = Bilhete::where('chave',$chave)->where('pago',1)->first();
         $evento = $bilhete->evento($bilhete->evento_id);
         $tipoBilhete = $bilhete->tipoBilhete($bilhete->tipo_bilhete_id);
         $eventoTipoBilhete = EventoTipoBilhete::where('evento_id',$evento->id)->where('tipo_bilhete_id',$tipoBilhete->id)->first();
@@ -36,7 +36,7 @@ class BilheteController extends Controller
         $html = "<body>";
         $html = $html."<style>body { margin: 0px; }html { margin: 0px}</style>";
         $html = $html."<style>body{background-image:url('".\Storage::url($eventoTipoBilhete->fundo,'public')."');}</style>";
-        $html = $html."<img src='https://chart.googleapis.com/chart?chs=200x200&cht=qr&chl=".$path.$chave."&choe=UTF-8' title='Link to ticket' />";
+        $html = $html."<img src='https://chart.googleapis.com/chart?chs=400x400&cht=qr&chl=".$path.$chave."&choe=UTF-8' title='Link to ticket' />";
         $html = $html."</body>";
         $pdf->loadHTML($html)->setPaper('a4', $eventoTipoBilhete->orientacao);//->setWarnings('true');
         return $pdf->download('ticket_'.$tipoBilhete->descricao.'_'.$evento->nome.'.pdf');
@@ -49,7 +49,7 @@ class BilheteController extends Controller
      */
     public function read(Request $request, $chave)
     {
-        $bilhete = Bilhete::where('chave',$chave)->first();
+        $bilhete = Bilhete::where('chave',$chave)->where('pago',1)->first();
         if($bilhete==null)
         {
             $request->session()->flash('mensagem', 'Bilhete invalido!');

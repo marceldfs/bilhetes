@@ -15,7 +15,7 @@ class UpdateBilheteTable extends Migration
     {
         Schema::table('bilhete', function ($table) {
             $table->boolean('pago');
-            $table->string('codigo_pagamento');
+            $table->string('codigo_pagamento')->nullable();
             $table->string('origem');
             $table->timestamp('data_utilizacao')->nullable();
         });

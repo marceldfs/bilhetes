@@ -11,6 +11,11 @@ use App\Bilhete;
 
 class EventoTipoBilheteController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+    
     /**
      * Display a listing of the resource.
      *
@@ -54,7 +59,9 @@ class EventoTipoBilheteController extends Controller
         $eventoTipoBilhete->tipo_bilhete_id = $request->input('tipoBilhetes');
         $eventoTipoBilhete->quantidade = $request->quantidade;
         $eventoTipoBilhete->orientacao = $request->input('orientacao');
+        $eventoTipoBilhete->com_cartaz = $request->input('comcartaz');
         $eventoTipoBilhete->fundo = $request->file('fundo')->store('fundos', 'public');
+        $eventoTipoBilhete->quantidade = $request->quantidade;
         $eventoTipoBilhete->save();
         $this->generateBilhetes($eventoTipoBilhete);
         
@@ -133,6 +140,10 @@ class EventoTipoBilheteController extends Controller
     public function destroy(Request $request, $id)
     {
         $eventoTipoBilhete = EventoTipoBilhete::find($id);
+        
+        Bilhete::where('evento_id',$eventoTipoBilhete->evento_id)
+                ->where('tipo_bilhete_id',$eventoTipoBilhete->tipo_bilhete_id)->delete();
+        
         $eventoTipoBilhete->delete();
         
         $request->session()->flash('mensagem', 'Bilhetes apagados com sucesso!');
@@ -142,7 +153,8 @@ class EventoTipoBilheteController extends Controller
     private function generateBilhetes(EventoTipoBilhete $eventoTipoBilhete)
     {
         $bilhetesGerados = count(Bilhete::where('evento_id',$eventoTipoBilhete->evento_id)
-                ->where('tipo_bilhete_id',$eventoTipoBilhete->tipo_bilhete_id)->get());
+                ->where('tipo_bilhete_id',$eventoTipoBilhete->tipo_bilhete_id)
+                ->where('origem','Gerado')->get());
         for($i=$bilhetesGerados;$i<$eventoTipoBilhete->quantidade;$i++)
         {
             $bilhete = new Bilhete;
@@ -150,6 +162,8 @@ class EventoTipoBilheteController extends Controller
             $bilhete->tipo_bilhete_id = $eventoTipoBilhete->tipo_bilhete_id;
             $bilhete->chave = rand(1,1000).'-'.$i.'-'.$bilhete->evento_id.'-'.$bilhete->tipo_bilhete_id;
             $bilhete->usado = 0;
+            $bilhete->pago = 1;
+            $bilhete->origem = 'Gerado';
             $bilhete->save();
         }
     }

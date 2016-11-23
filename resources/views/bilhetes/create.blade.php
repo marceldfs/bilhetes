@@ -36,7 +36,12 @@
 
     <div class="form-group">
         {{ Form::label('orientacao', 'Orientacao do cartaz :',['class' => 'label-format pull-left' ]) }}
-        {{ Form::select('orientacao', ['landscape' => 'Landscape', 'portrait' => 'Portrait']) }}
+        {{ Form::select('orientacao', ['landscape' => 'Landscape', 'portrait' => 'Portrait'], null, ['class' => 'form-control ', 'id' => 'orientacao']) }}
+    </div>
+
+    <div class="form-group">
+        {{ Form::label('comcartaz', 'Tem cartaz :',['class' => 'label-format pull-left' ]) }}
+        {{ Form::select('comcartaz', ['1' => 'Sim', '0' => 'Nao'], null, ['class' => 'form-control ', 'id' => 'orientacao']) }}
     </div>
 
     <div class="form-group">
