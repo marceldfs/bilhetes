@@ -56,5 +56,10 @@ Route::get('mensagem/createRequest','MensagemController@createRequest');
 
 Route::get('mensagem/{id}','MensagemController@index')->name('envio');
 
+Route::get('grupoenvio/{id}','GrupoEnvioController@index')->name('listaGrupoEnvio');
+
+Route::resource('grupoenvio','GrupoEnvioController');
+
+
 
 

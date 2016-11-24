@@ -4,45 +4,55 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
+use App\Notifications\SendSms;
 use Input;
 use Session;
 use App\Contacto;
+use App\GrupoEnvio;
+use App\Mensagem;
 use Nexmo;
+use Notification;
+use Illuminate\Support\Facades\Auth;
 
 class MensagemController extends Controller
 {
 
 
     public function createMessage()
-    {
-        $valor = Input::get('dados');
-        $teste="";
-
-       
-
-      foreach ($valor as $key => $value) {
-            $teste .= $value;
-            
-        }
-
-
-
-        $response = $this->createRequest();
-       
-
-        //Session::flash('mensagem', $teste);
-
-        return response()->json(array('msg'=>  $resposta), 200);
-    }
-    public function createRequest()
     {   
+        //Pegar os ids dos grupos selecionados 
+        $valor = Input::get('grupos');   
+        $sms = Input::get('mensagem');
+        $mensagem = new Mensagem;
+        $mensagem -> conteudo = $sms;
+        $user = Auth::user();
+        $mensagem -> grupo_id = $user -> grupo_id;
+        //pegar os numos dentro do grupo
+        foreach ($valor as $key => $value) 
+        {   
+            //pegar a lista de contactos dentro de cada grupo
+            $contactos =  Contacto::where('grupoenvio_id',$value)->get();            
+            $this->createRequest($contactos,$mensagem);
+        }       
+        
+        //Session::flash('mensagem', $teste);*/
+        return response()->json(array('msg'=> 'da'. $mensagem->conteudo), 200);
+    }
 
-        Nexmo::message()->send([
+
+
+    public function createRequest($contactos, $mensagem)
+    {       
+
+        Notification::send($contactos, new SendSms($mensagem));
+
+
+       /*$mensagem = Nexmo::message()->send([
              'to' => '258820007100',
               'from' => 'Mukhero',
               'text' => 'Hello from Nexmo'
-            ]);
-
+            ]);*/
+        
        /*$url = 'https://rest.nexmo.com/sms/json?' . http_build_query(
             [
               'api_key' =>  'b1afbefe',
@@ -57,7 +67,8 @@ class MensagemController extends Controller
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
         $response = curl_exec($ch);*/
 
-       return  "Parece Good";    
+      // return  "Sent message to " . $mensagem['status'];    
+        
     }
 
 
@@ -88,7 +99,7 @@ class MensagemController extends Controller
      public function index($id)
     {
         //
-        $contactos_by_grupoID = Contacto::where('grupo_id',$id)->get();
+        $contactos_by_grupoID = GrupoEnvio::where('grupo_id',$id)->get();
         return \View::make('mensagem.mensagem_envio')->with('contactos',$contactos_by_grupoID);
     }
     /**

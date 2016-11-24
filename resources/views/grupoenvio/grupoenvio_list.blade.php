@@ -9,28 +9,26 @@
   <div class="col-md-8">
   	<div class="panel panel-default">
   		<div class="panel-heading panel-red-heading"><span class="text-white-color-legend">
-  			 Contactos no grupo - {{  $grupo->nome }}
+  			Lista de grupos 
   		</div>
 <table id="tabelaContactos" class="table table-striped table-bordered back-color-white tg display">
 	<thead class="tg-yw4l">
-		<tr>		
-			<th></th>	
+		<tr>
 			<th>Nome</th>
-			<th>Numero</th>			
-			<th >Editar</th>
-			<th >Deletar</th>
+			<th>Contactos</th>
+			<th>Editar</th>
+			<th>Remover</th>
 		</tr>
 	</thead>
 	<tbody>
-		@foreach($contactos as $contacto => $value)
+		@foreach($gruposenvio as $grupo => $value)
 			<tr>
-				<td></td>
 				<td>{{ $value->nome}}</td>
-				<td>{{ $value->numero}}</td>
-				<td><a class="btn btn-small btn-success" href="{{ URL::to('evento/' . $value->id) }}">&nbsp;<span class="glyphicon glyphicon-blackboard" aria-hidden="true"></span>&nbsp;</a>
+				<td><a class="btn btn-small btn-success" href="{{ URL::to('contacto/' . $value->id) }}">&nbsp;<span class="glyphicon glyphicon-blackboard" aria-hidden="true"></span>&nbsp;</a></td>				
+				<td>
 				</td>
 				<td>
-					 {{ Form::open(array('url' => 'contacto/' . $value->id, 'class' => 'pull-right')) }}
+					 {{ Form::open(array('url' => 'evento/' . $value->id, 'class' => 'pull-right')) }}
                     	{{ Form::hidden('_method', 'DELETE') }}
                     	{{ Form::submit('&nbsp;X &nbsp;', array('class' => 'btn btn-warning')) }}
                 	{{ Form::close() }}
@@ -42,7 +40,7 @@
 </div>
 </div>
 	<div class="col-md-4">
-		 <div class="panel-heading panel-red-heading"><span class="text-white-color-legend">Adicionar contacto</span></div>
+		 <div class="panel-heading panel-red-heading"><span class="text-white-color-legend">Adicionar Grupo de Contactos</span></div>
 		 @if (count($errors) > 0)
 						    <div class="alert alert-danger">
 						        <ul>
@@ -53,18 +51,11 @@
 						    </div>
 		@endif
 		<div class="panel-body">
-			{!!Form::open(array('url'=>'contacto')) !!}
-			<div class="form-group">
-	                    	{{ Form::hidden('invisible', $grupo->id,array('id'=>'grupoenvio_id','name'=>'grupoenvio_id')) }}
-	        </div>			
+			{!!Form::open(array('url'=>'grupoenvio')) !!}
 			<div class="form-group">
 	                    	{{ Form::label('nome_lbl', 'Nome :',  ['class' => 'label-format pull-left','for' => 'nome' ])  }} 
 	                    	{{ Form::text('nome',null,['class' => 'form-control ', 'id' => 'nome']) }}
-	        </div>
-	        <div class="form-group">
-	                    	{{ Form::label('numero_lbl', 'Numero :',  ['class' => 'label-format pull-left','for' => 'numero' ])  }} 
-	                    	{{ Form::text('numero',"+258",['class' => 'form-control ', 'id' => 'numero']) }}
-	        </div>
+	        </div>	        
 	        <button type="submit" class="btn btn-success btn-lg pull-right" aria-label="Left Align">
   								<span class="glyphicon glyphicon-ok" aria-hidden="true"></span>&nbsp;Guardar
 			</button>
@@ -76,17 +67,6 @@
 <script>
 $(document).ready(function() {
     $('#tabelaContactos').DataTable( {
-        columnDefs: [ {
-            orderable: false,
-            className: 'select-checkbox',
-            targets:   0
-        } ],
-        select: {
-            style:    'multi',
-            selector: 'td:first-child'
-        },
-        order: [[ 1, 'asc' ]],
-
         "scrollY":        "200px",
 	        "scrollCollapse": true,
 	        "paging":         false

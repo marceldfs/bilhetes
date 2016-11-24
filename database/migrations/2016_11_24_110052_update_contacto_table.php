@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class UpdateUtilizadorTable extends Migration
+class UpdateContactoTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,13 @@ class UpdateUtilizadorTable extends Migration
      */
     public function up()
     {
-        Schema::table('utilizador', function ($table) {
-            $table->integer('grupo_id')->unsigned()->default(1);
+        //
+        Schema::table('contacto', function ($table) {
+           
+            $table->integer('grupoenvio_id')->unsigned();
+            $table->foreign('grupoenvio_id')->references('id')->on('grupoenvio');  
         });
-        
-        Schema::table('utilizador', function(Blueprint $table) {
-            $table->foreign('grupo_id')->references('id')->on('grupo');
-        });
+           
     }
 
     /**
@@ -29,6 +29,6 @@ class UpdateUtilizadorTable extends Migration
      */
     public function down()
     {
-        
+        //
     }
 }

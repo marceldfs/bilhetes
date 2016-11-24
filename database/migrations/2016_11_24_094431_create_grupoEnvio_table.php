@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class UpdateUtilizadorTable extends Migration
+class CreateGrupoEnvioTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,12 @@ class UpdateUtilizadorTable extends Migration
      */
     public function up()
     {
-        Schema::table('utilizador', function ($table) {
-            $table->integer('grupo_id')->unsigned()->default(1);
-        });
-        
-        Schema::table('utilizador', function(Blueprint $table) {
+        Schema::create('grupoEnvio', function (Blueprint $table) {
+            $table->increments('id');            
+            $table->integer('grupo_id')->unsigned();
             $table->foreign('grupo_id')->references('id')->on('grupo');
+            $table->string('nome',50);
+            $table->timestamps();
         });
     }
 
@@ -29,6 +29,6 @@ class UpdateUtilizadorTable extends Migration
      */
     public function down()
     {
-        
+        Schema::dropIfExists('grupoEnvio');
     }
 }

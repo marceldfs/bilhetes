@@ -16,15 +16,16 @@
 		<tr>		
 			<th></th>	
 			<th>Nome</th>
-			<th>Numero</th>			
+			<th class="hide"></th>	
+					
 		</tr>
 	</thead>
 	<tbody>
-		@foreach($contactos as $contacto => $value)
+		@foreach($contactos as $grupo => $value)
 			<tr>
 				<td></td>
 				<td>{{ $value->nome}}</td>
-				<td>{{ $value->numero}}</td>
+				<td class="hide">{{$value->id}}</td>
 			</tr>
 			@endforeach
 	</tbody>
@@ -50,7 +51,7 @@
 	        </div>
 	        <div class="form-group">
 	                    	{{ Form::label('numero_lbl', 'Mensagem :',  ['class' => 'label-format pull-left','for' => 'numeroT' ])  }} 
-	                    	{{ Form::textArea('numeroT',"+258",['class' => 'form-control ', 'id' => 'numeroT']) }}
+	                    	{{ Form::textArea('mensagem',null,['class' => 'form-control ', 'id' => 'mensagem']) }}
 	        </div>	   
 			<a  id="enviar" class="btn btn-success btn-lg pull-right" aria-label="Left Align">Enviar SMS <span class="glyphicon glyphicon-envelope" aria-hidden="true"></span>&nbsp;</a>
 		</div>
@@ -94,12 +95,16 @@ $('#enviar').click(function(e){
 		dataArr.push(value[2]);
 
 	});
+	//pegar a mensagem
+	var sms = $('#mensagem').val();
 	
-
 	 var formData = {
          
-                    dados: dataArr,
+                    grupos: dataArr,
+                    mensagem:sms,
                 } 
+
+        
 
 	$.ajax({
 		type:'GET',
@@ -109,7 +114,7 @@ $('#enviar').click(function(e){
 		success:function(msg)
 		{
 			console.log(msg);
-			$("#numeroT").text(msg.msg);
+			$("#mensagem").text(msg.msg);
 		},
 		 error: function (textStatus, errorThrown) {
                 console.log(errorThrown);

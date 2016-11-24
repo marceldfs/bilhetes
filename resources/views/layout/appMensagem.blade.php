@@ -53,13 +53,13 @@
                             <ul class="nav navbar-nav">
                                 <li class="active"><a href="/">Home</a></li>
                                  <li >
-                                    <a href="/contacto/{{ Auth::user()->id }}"  role="button" aria-haspopup="true" aria-expanded="false">Contactos </a>
-                                   {{--  <ul class="dropdown-menu">
-                                        <li><a href="/contacto/{{ Auth::user()->id }}">Visualizar Todos</a></li>
-                                                                             
-                                     <!--    <li role="separator" class="divider"></li>
-                                       <li><a href="#">Visualizar Unico</a></li> -->
-                                      </ul>--}}
+                                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Contactos <span class="caret"></span></a>
+                                    
+                                    <ul class="dropdown-menu">
+                                            <li><a href="/contacto/{{ Auth::user()->id }}">Visualizar Todos</a></li>                             
+                                            <li role="separator" class="divider"></li>
+                                            <li><a href="/grupoenvio/{{ Auth::user()->id }}">Visualizar Grupos</a></li> 
+                                    </ul>
                                 </li>
                                 <li class="dropdown">
                                     <a href="/mensagem/{{ Auth::user()->id }}" role="button" aria-haspopup="true" aria-expanded="false">Enviar SMS </a>

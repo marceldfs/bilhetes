@@ -14,11 +14,9 @@ class CreateContactoTable extends Migration
     public function up()
     {
         Schema::create('contacto', function (Blueprint $table) {
-            $table->increments('id');
-            $table->integer('grupo_id')->unsigned();
+            $table->increments('id');            
             $table->string('nome',50);
-            $table->string('numero',13);
-            $table->foreign('grupo_id')->references('id')->on('grupo');
+            $table->string('numero',13);            
             $table->timestamps();
         });
  //
