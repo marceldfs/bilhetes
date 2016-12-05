@@ -8,7 +8,7 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\NexmoMessage;
 use App\Mensagem;
 
-class SendSms extends Notification
+class SendSms extends Notification implements ShouldQueue
 {
     use Queueable;
 

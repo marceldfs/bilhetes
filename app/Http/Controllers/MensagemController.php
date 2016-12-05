@@ -13,13 +13,16 @@ use App\Mensagem;
 use Nexmo;
 use Notification;
 use Illuminate\Support\Facades\Auth;
+use Carbon\Carbon; 
+//use Illuminate\Notifications\Notification;
+
 
 class MensagemController extends Controller
 {
 
 
     public function createMessage()
-    {   
+    {   //use Notification;
         //Pegar os ids dos grupos selecionados 
         $valor = Input::get('grupos');   
         $sms = Input::get('mensagem');
@@ -27,6 +30,8 @@ class MensagemController extends Controller
         $mensagem -> conteudo = $sms;
         $user = Auth::user();
         $mensagem -> grupo_id = $user -> grupo_id;
+        //Temos q guardar a mensagem para a queue conseguir usar
+        $mensagem->save();
         //pegar os numos dentro do grupo
         foreach ($valor as $key => $value) 
         {   
@@ -40,11 +45,32 @@ class MensagemController extends Controller
     }
 
 
-
+    /*
+    *   METODO Q FAZ O REQUEST AO NEXMO
+    *   DEVEMOS GARANTIR QUE NO MAXIMO 30 SMS SAO ENVIADAS POR SEGUNDO 
+    */
     public function createRequest($contactos, $mensagem)
     {       
+        $when = Carbon::now()->addSeconds(0);
+       //Notification::send($contactos, new SendSms($mensagem));
+      
+        $cont=0;
+        $mensagem="";
+        foreach ($contactos as $contacto => $value) 
+       {       
 
-        Notification::send($contactos, new SendSms($mensagem));
+            //Ja enviamos 30 mensagens
+            if($cont==30)
+            {   
+                $when = Carbon::now()->addSeconds(1);
+                $cont = 0;
+            }
+            
+            $mensagem = $value->notify((new SendSms($mensagem))->delay($when));    
+
+            $cont+=1;
+        }
+    
 
 
        /*$mensagem = Nexmo::message()->send([
@@ -67,7 +93,7 @@ class MensagemController extends Controller
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
         $response = curl_exec($ch);*/
 
-      // return  "Sent message to " . $mensagem['status'];    
+       return  "Sent message to " . $mensagem;    
         
     }
 
